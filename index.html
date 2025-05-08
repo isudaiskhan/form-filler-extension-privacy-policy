@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Website Time Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <h2>Form Filler Extension</h2>
+      <div class="highlight-box">
+        <i class="fas fa-lock"></i>
+        <p>
+          🔒 This extension does not collect, store, or transmit any personal
+          data. All actions are performed locally in your browser.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>
+          <span class="icon"><i class="fas fa-info-circle"></i></span>1.
+          Introduction
+        </h2>
+        <p>
+          This extension is designed to help you quickly fill out web forms with
+          random dummy data for testing or demo purposes.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>
+          <span class="icon"><i class="fas fa-database"></i></span>2. Data
+          Handling
+        </h2>
+        <p>
+          The extension operates entirely on the client side. It does not
+          collect or transmit any personal or form data to any external server.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>3. Permissions</h2>
+        <p>The extension requests minimal permissions:
+      
+            <p><strong>activeTab</strong>: to access the current tab where the form resides.</p>
+            <p><strong>scripting</strong>: to inject the JavaScript code that fills in form fields with dummy data.</p>
+        
+         <p> These permissions are only used when you activate the extension.</p>
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>4. No Third-Party Services</h2>
+            <p>This extension does not use any third-party scripts, trackers, or analytics tools.</p>
+      </div>
+     
+
+      <div class="section">
+        <h2>
+          <span class="icon"><i class="fas fa-sync-alt"></i></span>5. Policy
+          Changes
+        </h2>
+        <p>
+          We may update this policy occasionally. If we make major changes,
+          you'll be notified via the extension interface or its store listing.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>
+          <span class="icon"><i class="fas fa-envelope"></i></span>6. Contact Us
+        </h2>
+        <p>
+          If you have any concerns or questions about this Privacy Policy,
+          please reach out to us at
+          <a href="mailto:isudaiskhan54@gmail.com">isudaiskhan54@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+      window.addEventListener("scroll", () => {
+        const scrollProgress = document.getElementById("scroll-progress");
+        const windowHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        scrollProgress.style.width = scrolled + "%";
+      });
+
+      // Back to Top Button
+      const backToTop = document.getElementById("back-to-top");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Section Animation on Scroll
+      const sections = document.querySelectorAll(".section");
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        section.style.opacity = 0;
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "all 0.4s ease-out";
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
